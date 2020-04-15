@@ -105,11 +105,11 @@ function User(name, age ,email, savedPosts){
   this.name = name;
   this.age = age;
   this.email = email;
-  this.savedPosts = [];
+  this.savedPosts = savedPosts;
 };
 
 User.prototype.addSavedPost = function(id, title, rating)  {
-  let post = { id:this.id, title, rating };
+  let post = { id, title, rating };
   console.log(this.savedPosts);
   this.savedPosts.push(post);
 }; 
@@ -121,7 +121,7 @@ User.prototype.addSavedPost = function(id, title, rating)  {
 
 // Code here
 User.prototype.removeSavedPost = function(id){
-  console.log(this.savedPosts.findIndex(post.id))
+  let index = this.savedPosts.indexOf(this.savedPosts[id])
   this.savedPosts.splice(index,1)
 }
 
@@ -134,6 +134,10 @@ User.prototype.removeSavedPost = function(id){
 
 // Code here
 User.prototype.changePostRating=function(id, newrating){
-  console.log(this.savedPosts.findIndex(post.id))
-  this.savedPosts.rating
+this.savedPosts = this.savedPosts.map(event => {
+  if (event.id === id){
+    event.rating = newrating
+  }
+  return event
+})
 }

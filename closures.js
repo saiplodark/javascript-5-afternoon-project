@@ -94,19 +94,18 @@ function makeCounter(){
 */
 
 function counterFactory(value) {
+  let num = value
   return {
-    inc(){
-      value ++
-      return value
+    inc: () => {
+      return num += 1;
     },
-    dec(){
-      value--
-      return value
+    dec: () => {
+      return num -= 1;
     }
-  }
+  };
 }
 
-let counter = counterFactory(10);
+counter = counterFactory(10);
 counter.inc() // 11
 counter.inc() // 12
 counter.inc() // 13
@@ -159,9 +158,12 @@ var module = (function() {
   // outside our lexical scope
   return {
     // Code here.
+    publicMethod: function(){
+      return privateMethod()
+    }
   };
 })();
-
+module.publicMethod()
 
 
 ////////// PROBLEM 7 //////////
@@ -178,6 +180,14 @@ function secretNumber() {
 
   return {
     // Code here
+    addToSecret: function(val){
+      secret = secret + val
+      return secret
+    },
+    takeAwayFromSecret:function(val){
+      secret = secret - val
+      return secret
+    }
   };
 }
 

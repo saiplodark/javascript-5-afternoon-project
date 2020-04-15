@@ -101,7 +101,18 @@ Movie.prototype.changeRating=function(num){
 // Once the User constructor function is created, write a prototype method for the User function. Name this method addSavedPost. It should take in three parameters: id (a number), title (a string) and rating (a number). Use these parameters to create a new object and add it to the savedPosts array. Make sure to name the properties the same as described previously (id, title, rating).
 
 // Code here
+function User(name, age ,email, savedPosts){
+  this.name = name;
+  this.age = age;
+  this.email = email;
+  this.savedPosts = [];
+};
 
+User.prototype.addSavedPost = function(id, title, rating)  {
+  let post = { id:this.id, title, rating };
+  console.log(this.savedPosts);
+  this.savedPosts.push(post);
+}; 
 
 ////////// PROBLEM 6 //////////
 
@@ -109,6 +120,12 @@ Movie.prototype.changeRating=function(num){
 // Write a prototype method for the User constructor function named removeSavedPost that will take in one number parameter representing the post id. Use this id to find and remove the matching object in the savedPosts array.
 
 // Code here
+User.prototype.removeSavedPost = function(id){
+  console.log(this.savedPosts.findIndex(post.id))
+  this.savedPosts.splice(index,1)
+}
+
+
 
 ////////// PROBLEM 7 //////////
 
@@ -116,3 +133,7 @@ Movie.prototype.changeRating=function(num){
 // Write a prototype method for the User constructor function named changePostRating that will take in two number parameters. The first will be an id (a number) and the second will be the new rating (a number). Use the id to find the matching object in the savedPosts array. Once you find the matching object, update it's rating score with the new rating parameter.
 
 // Code here
+User.prototype.changePostRating=function(id, newrating){
+  console.log(this.savedPosts.findIndex(post.id))
+  this.savedPosts.rating
+}
